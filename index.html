@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TRAIN TIME TABLE</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!--JAVASCRIPT LIBRARIES-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+</head>
+
+
+<body>
+  <div class=container>
+    <div class="jumbotron">
+      <h1 class="display-9">TRAIN TIME TABLE</h1>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <!-- TABLE -->
+        <div class="card mb-4">
+          <div class="card-header">Current Train Schedule</div>
+          <div class="card-body">
+            <table class="table table-striped" id="train-table">
+              <thead>
+                <tr>
+                  <th scope="col">Train Name</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Frequency(min)</th>
+                  <th scope="col">Next Arrival</th>
+                  <th scope="col">Minutes Away</th>
+                </tr>
+              </thead>
+              <tbody id="table">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <div class="card-header">Add Train</div>
+          <div class="card-body">
+            <!-- FORM -->
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Train Name</label>
+                <input type="text" class="form-control" id="name-input" aria-describedby="emailHelp"
+                  placeholder="Train Name">
+                <small id="emailHelp" class="form-text text-muted">Enter Train Name</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Destination</label>
+                <input type="text" class="form-control" id="destination-input" aria-describedby="emailHelp"
+                  placeholder="Destination">
+                <small id="emailHelp" class="form-text text-muted">Enter Destination</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">First Train Time (HH:mm-military time)</label>
+                <input type="text" class="form-control" id="fttime-input" aria-label="Amount (to the nearest dollar)"
+                  placeholder="Train Time ">
+                <small id="emailHelp" class="form-text text-muted">Enter First Train Time</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Frequency (min)</label>
+                <input type="text" class="form-control" id="frequency-input"
+                  aria-describedby="Amount (to the nearest dollar)" placeholder="Train Frequency">
+                <small id="emailHelp" class="form-text text-muted">Enter Train Frequency</small>
+              </div>
+              <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+  <script src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
