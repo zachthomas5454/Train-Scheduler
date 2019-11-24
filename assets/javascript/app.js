@@ -52,46 +52,36 @@ database.ref().on("child_added", function (childSnapshot) {
   var frequency = childSnapshot.val().freq;
   var firstTrainTime = childSnapshot.val().firstTrnTm;
 
-  // Employee Info
-  console.log(name);
-  console.log(destination);
-  console.log(frequency);
-  console.log(firstTrainTime)
-
   // Format the Train Start Time
-  var estMinutesFormat = moment.unix(firstTrainTime).format("HH:mm");
+  var firstTrainTimeFormat = moment.unix(firstTrainTime).format("HH:mm");
 
-// Calculate the minutes left for arrival
+  // Calculate the minutes left for arrival
   // First Time (pushed back 1 year to make sure it comes before current time)
-  var firstTimeConverted = moment(estMinutesFormat, "HH:mm").subtract(1, "years");
-  console.log(firstTimeConverted);
+  var firstTimeConverted = moment(firstTrainTimeFormat, "HH:mm").subtract(1, "years");
 
   // Current Time
   var currentTime = moment();
-  console.log(moment(currentTime).format("HH:mm"));
 
   // Difference between the times
   var diffTime = currentTime.diff(moment(firstTimeConverted), "minutes");
-  console.log("DIFFERENCE IN TIME: " + diffTime);
 
   // Time apart (remainder)
   var remainder = diffTime % frequency;
-  console.log(remainder);
-
+  
   // Minute Until Train
   var tMinutesTillTrain = frequency - remainder;
-  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-  // Format the Train Start Time
-  var estMinutesFormat = moment.unix(firstTrainTime).format("HH:mm");
-
+  
+  // Arrival Time
+  // Format the Arrival Time
+  var arrivalTime = currentTime.add(tMinutesTillTrain, "minutes");
+  var estTimeFormat = moment(arrivalTime).format("HH:mm");
 
   // Create the new row
   var newRow = $("<tr>").append(
     $("<td>").text(name),
     $("<td>").text(destination),
     $("<td>").text(frequency),
-    $("<td>").text(estMinutesFormat),
+    $("<td>").text(estTimeFormat),
     $("<td>").text(tMinutesTillTrain),
   );
 
